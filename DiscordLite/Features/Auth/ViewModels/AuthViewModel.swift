@@ -11,7 +11,7 @@ final class AuthViewModel: ObservableObject {
     private let authRepository: AuthRepository
     private let logger: LoggerService
 
-    private var pollingTask: Task<Void, Error>?
+    private var pollingTask: Task<Void, Never>?
     
     init(authRepository: AuthRepository, logger: LoggerService) {
         self.authRepository = authRepository
