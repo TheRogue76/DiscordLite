@@ -6,6 +6,6 @@ struct AppConfig {
 
     static let `default` = AppConfig(
         grpcHost: "http://localhost",
-        grpcPort: 50051,
+        grpcPort: 50051
     )
 }
