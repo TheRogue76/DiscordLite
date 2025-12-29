@@ -16,7 +16,7 @@ env:
 jobs:
   swiftlint:
     name: SwiftLint
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -31,7 +31,7 @@ jobs:
 
   swift-format:
     name: Swift Format
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -55,7 +55,7 @@ jobs:
 
   test:
     name: Unit Tests
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -115,7 +115,7 @@ jobs:
 
   build:
     name: Build
-    runs-on: macos-15
+    runs-on: macos-26
     needs: [swiftlint, swift-format, test]
     steps:
       - name: Checkout code
@@ -147,7 +147,7 @@ jobs:
 
   status-check:
     name: Status Check
-    runs-on: macos-15
+    runs-on: macos-26
     needs: [swiftlint, swift-format, test, build]
     if: always()
     steps:
