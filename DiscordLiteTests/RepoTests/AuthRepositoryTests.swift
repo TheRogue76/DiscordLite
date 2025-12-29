@@ -1,8 +1,8 @@
-//import XCTest
-//import SwiftMockk
-//@testable import DiscordLite
+// import XCTest
+// import SwiftMockk
+// @testable import DiscordLite
 //
-//final class AuthRepositoryTests: XCTestCase {
+// final class AuthRepositoryTests: XCTestCase {
 //    var sut: AuthRepository!
 //    var mockAuthGrpcDataSource: MockAuthGRPCDatasource!
 //    var mockKeychain: MockKeychainService!
@@ -95,4 +95,4 @@
 //            mockKeychain.delete(key: "discord_session_id")
 //        }
 //    }
-//}
+// }

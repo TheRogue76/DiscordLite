@@ -34,6 +34,6 @@ struct AuthLoadingView: View {
     }
 }
 
-//#Preview { // TODO: break the view model view and the subviews apart so we can set them up for testing
+// #Preview { // TODO: break the view model view and the subviews apart so we can set them up for testing
 //    AuthLoadingView(viewModel: AuthViewModel())
-//}
+// }

@@ -10,7 +10,7 @@ import ConnectNIO
 class GRPCClientImpl: GRPCClient {
     private let appConfig: AppConfig
     var client: ProtocolClient
-    
+
     init(appConfig: AppConfig) {
         self.appConfig = appConfig
         client = ProtocolClient(

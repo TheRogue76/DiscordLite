@@ -1,5 +1,6 @@
 import Foundation
-//import SwiftMockk
+
+// import SwiftMockk
 
 enum AuthRepositoryError: Error {
     case failedToInitAuth
@@ -7,7 +8,7 @@ enum AuthRepositoryError: Error {
     case failedToRevoke
 }
 
-//@Mockable
+// @Mockable
 protocol AuthRepository {
     func initAuth() async -> Result<(authURL: URL, sessionID: String), AuthRepositoryError>
     func pollAuthStatus(sessionID: String) async -> Result<AuthSession, AuthRepositoryError>

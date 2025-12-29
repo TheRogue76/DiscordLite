@@ -1,9 +1,9 @@
-//import XCTest
-//import SwiftMockk
-//@testable import DiscordLite
+// import XCTest
+// import SwiftMockk
+// @testable import DiscordLite
 //
-//@MainActor
-//final class AuthViewModelTests: XCTestCase {
+// @MainActor
+// final class AuthViewModelTests: XCTestCase {
 //    var sut: AuthViewModel!
 //    var mockAuthRepository: MockAuthRepository!
 //    var mockLoggerService: MockLoggerService!
@@ -128,4 +128,4 @@
 //            await mockAuthRepository.revokeAuth(sessionID: any())
 //        }
 //    }
-//}
+// }

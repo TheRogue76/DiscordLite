@@ -1,5 +1,5 @@
-import Foundation
 import DiscordLiteAPI
+import Foundation
 
 final class AuthRepositoryImpl: AuthRepository {
     private let authGRPCDataSource: AuthGRPCDatasource
@@ -27,12 +27,12 @@ final class AuthRepositoryImpl: AuthRepository {
 
     func pollAuthStatus(sessionID: String) async -> Result<AuthSession, AuthRepositoryError> {
         let startTime = Date()
-        let timeout: TimeInterval = 60.0 // 60 seconds timeout
-        let pollInterval: TimeInterval = 2.0 // Poll every 2 seconds
+        let timeout: TimeInterval = 60.0  // 60 seconds timeout
+        let pollInterval: TimeInterval = 2.0  // Poll every 2 seconds
 
         while Date().timeIntervalSince(startTime) < timeout {
             let result = await authGRPCDataSource.getAuthStatus(sessionId: sessionID)
-            
+
             switch result {
             case .success(let success):
                 switch success.status {
@@ -42,7 +42,7 @@ final class AuthRepositoryImpl: AuthRepository {
                     )
                     // Save session to keychain
                     switch keychain.save(key: sessionKey, value: sessionID) {
-                    case .success():
+                    case .success:
                         return .success(session)
                     case .failure(let failure):
                         logger.error("AuthRepo: Failed to save token", error: failure)
@@ -50,8 +50,7 @@ final class AuthRepositoryImpl: AuthRepository {
                     }
                 case .pending:
                     logger.debug("Auth status: pending, continuing to poll...")
-                    break
-                case .UNRECOGNIZED(_), .failed, .unspecified:
+                case .UNRECOGNIZED, .failed, .unspecified:
                     logger.debug("AuthRepo: Received unrecognized auth status from backend: \(success)")
                     return .failure(.failedToFetchStatus)
                 }
@@ -71,7 +70,7 @@ final class AuthRepositoryImpl: AuthRepository {
         case .success:
             let result = keychain.delete(key: sessionKey)
             switch result {
-            case .success(_):
+            case .success:
                 return .success(())
             case .failure(let failure):
                 logger.error("AuthRepo: Failed to clear token from storage", error: failure)
@@ -87,7 +86,7 @@ final class AuthRepositoryImpl: AuthRepository {
         guard let sessionID = try? keychain.retrieve(key: sessionKey).get() else {
             return .success(nil)
         }
-        
+
         return .success(
             AuthSession(
                 sessionID: sessionID

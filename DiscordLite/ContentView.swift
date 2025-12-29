@@ -5,11 +5,14 @@
 //  Created by Parsa's Content Creation Corner on 2025-12-25.
 //
 
-import SwiftUI
 import FactoryKit
+import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var authViewModel = AuthViewModel(authRepository: Container.shared.authRepository(), logger: Container.shared.logger())
+    @StateObject private var authViewModel = AuthViewModel(
+        authRepository: Container.shared.authRepository(),
+        logger: Container.shared.logger()
+    )
 
     var body: some View {
         Group {
