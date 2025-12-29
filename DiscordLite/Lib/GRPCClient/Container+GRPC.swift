@@ -13,6 +13,6 @@ extension Container {
                 appConfig: self.appConfig()
             )
         }
-            .singleton
+        .singleton
     }
 }

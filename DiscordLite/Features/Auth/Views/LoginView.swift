@@ -26,28 +26,31 @@ struct LoginView: View {
             Spacer()
 
             // Sign in button
-            Button(action: {
-                isLoading = true
-                Task {
-                    await viewModel.startAuth()
-                    isLoading = false
-                }
-            }) {
-                HStack {
-                    if isLoading {
-                        ProgressView()
-                            .controlSize(.small)
-                            .padding(.trailing, 8)
+            Button(
+                action: {
+                    isLoading = true
+                    Task {
+                        await viewModel.startAuth()
+                        isLoading = false
                     }
-                    Text("Sign in with Discord")
-                        .fontWeight(.semibold)
+                },
+                label: {
+                    HStack {
+                        if isLoading {
+                            ProgressView()
+                                .controlSize(.small)
+                                .padding(.trailing, 8)
+                        }
+                        Text("Sign in with Discord")
+                            .fontWeight(.semibold)
+                    }
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(Color(red: 0x58 / 255, green: 0x65 / 255, blue: 0xF2 / 255))
+                    .foregroundStyle(.white)
+                    .cornerRadius(8)
                 }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color(red: 0x58/255, green: 0x65/255, blue: 0xF2/255))
-                .foregroundStyle(.white)
-                .cornerRadius(8)
-            }
+            )
             .buttonStyle(.plain)
             .disabled(isLoading)
             .frame(width: 300)
@@ -59,6 +62,6 @@ struct LoginView: View {
     }
 }
 
-//#Preview { // TODO: break the view model view and the subviews apart so we can set them up for testing
+// #Preview { // TODO: break the view model view and the subviews apart so we can set them up for testing
 //    LoginView(viewModel: AuthViewModel())
-//}
+// }

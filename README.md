@@ -343,6 +343,112 @@ log stream --predicate 'subsystem == "com.nasirimehr.DiscordLite"'
 log stream --predicate 'subsystem == "com.nasirimehr.DiscordLite" AND category == "Auth"'
 ```
 
+## Code Quality
+
+### SwiftLint
+
+The project uses SwiftLint to enforce Swift style and conventions.
+
+**Installation:**
+```bash
+brew install swiftlint
+```
+
+**Run manually:**
+```bash
+# Lint all files
+swiftlint
+
+# Auto-fix issues where possible
+swiftlint --fix
+
+# Strict mode (treats warnings as errors)
+swiftlint lint --strict
+```
+
+**Xcode Integration:**
+
+SwiftLint runs automatically during build. Add a Run Script Phase in Xcode:
+1. Select project → Target → Build Phases
+2. Click + → New Run Script Phase
+3. Add: `if which swiftlint >/dev/null; then swiftlint; fi`
+4. Move above "Compile Sources"
+
+**Configuration:**
+
+Rules are configured in `.swiftlint.yml`:
+- Line length: 120 chars (warning), 150 (error)
+- File length: 400 lines (warning), 600 (error)
+- Custom rules: No print statements, no force unwrapping, no force try
+
+### swift-format
+
+Apple's official code formatter for consistent styling.
+
+**Installation:**
+```bash
+brew install swift-format
+```
+
+**Format code:**
+```bash
+# Format all files in place
+swift-format format --in-place --recursive DiscordLite DiscordLiteTests
+
+# Check formatting without modifying files
+swift-format lint --recursive DiscordLite DiscordLiteTests
+
+# Format a specific file
+swift-format format --in-place DiscordLite/ContentView.swift
+```
+
+**Configuration:**
+
+Formatting rules in `.swift-format`:
+- Line length: 120 characters
+- Indentation: 4 spaces
+- Ordered imports
+- No semicolons
+
+**Pre-commit Hook (Optional):**
+
+Add to `.git/hooks/pre-commit`:
+```bash
+#!/bin/bash
+swift-format format --in-place --recursive DiscordLite DiscordLiteTests
+git add DiscordLite DiscordLiteTests
+```
+
+Make executable: `chmod +x .git/hooks/pre-commit`
+
+### GitHub Actions CI
+
+The project includes automated CI checks that run on every pull request:
+
+**CI Pipeline:**
+1. **SwiftLint** - Enforces code style (strict mode)
+2. **swift-format** - Checks code formatting
+3. **Unit Tests** - Runs all test suites
+4. **Build** - Verifies release build succeeds
+
+**Workflow:** `.github/workflows/ci.yml`
+
+**Running CI locally before pushing:**
+```bash
+# Run all checks locally
+./scripts/ci-local.sh
+
+# Or run individually
+swiftlint lint --strict
+swift-format lint --recursive DiscordLite DiscordLiteTests
+xcodebuild test -project DiscordLite.xcodeproj -scheme DiscordLite -destination 'platform=macOS'
+```
+
+**CI Requirements:**
+- All checks must pass before merging
+- PRs automatically trigger CI
+- Pushes to main/develop also run CI
+
 ## Contributing
 
 This is a personal project, but suggestions and feedback are welcome!

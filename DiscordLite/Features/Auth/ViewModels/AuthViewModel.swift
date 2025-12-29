@@ -1,8 +1,8 @@
-import Foundation
-import SwiftUI
-import FactoryKit
 import AppKit
 import Combine
+import FactoryKit
+import Foundation
+import SwiftUI
 
 @MainActor
 final class AuthViewModel: ObservableObject {
@@ -12,7 +12,7 @@ final class AuthViewModel: ObservableObject {
     private let logger: LoggerService
 
     private var pollingTask: Task<Void, Never>?
-    
+
     init(authRepository: AuthRepository, logger: LoggerService) {
         self.authRepository = authRepository
         self.logger = logger
@@ -29,7 +29,7 @@ final class AuthViewModel: ObservableObject {
                 return
             }
             state = .authenticated(session: session)
-        case .failure(_):
+        case .failure:
             state = .unauthenticated
         }
     }
@@ -37,9 +37,9 @@ final class AuthViewModel: ObservableObject {
     func startAuth() async {
         logger.info("Starting authentication flow")
         let result = await authRepository.initAuth()
-        
+
         switch result {
-        case .success((let url, let sessionID)):
+        case let .success((url, sessionID)):
             state = .authenticating
 
             // Open URL in default browser
@@ -47,7 +47,6 @@ final class AuthViewModel: ObservableObject {
 
             // Start polling for auth status
             startPolling(sessionID: sessionID)
-            break
         case .failure(let error):
             logger.error("Failed to start auth", error: error)
             state = .error("Failed to start auth")
@@ -61,17 +60,16 @@ final class AuthViewModel: ObservableObject {
             guard let self = self else { return }
 
             let result = await self.authRepository.pollAuthStatus(sessionID: sessionID)
-            
+
             switch result {
             case .success(let success):
                 await MainActor.run {
                     self.state = .authenticated(session: success)
                 }
-            case .failure(_):
+            case .failure:
+                guard !Task.isCancelled else { return }
                 await MainActor.run {
-                    if !Task.isCancelled {
-                        self.state = .error("Failed to login with discord, please try again later")
-                    }
+                    self.state = .error("Failed to login with discord, please try again later")
                 }
             }
         }
@@ -94,7 +92,7 @@ final class AuthViewModel: ObservableObject {
 
         let result = await authRepository.revokeAuth(sessionID: session.sessionID)
         switch result {
-        case .success():
+        case .success:
             state = .unauthenticated
             logger.info("Logout successful")
         case .failure(let failure):

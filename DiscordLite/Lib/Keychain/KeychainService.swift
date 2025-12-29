@@ -1,5 +1,6 @@
 import Foundation
-//import SwiftMockk
+
+// import SwiftMockk
 
 enum KeychainServiceError: Error {
     case failedToEncodeData
@@ -9,7 +10,7 @@ enum KeychainServiceError: Error {
     case failedToDeleteItem
 }
 
-//@Mockable
+// @Mockable
 protocol KeychainService {
     func save(key: String, value: String) -> Result<Void, KeychainServiceError>
     func retrieve(key: String) -> Result<String?, KeychainServiceError>

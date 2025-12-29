@@ -9,8 +9,6 @@ final class LoggerServiceImpl: LoggerService {
     func debug(_ message: String) {
         generalLogger.debug("\(message, privacy: .public)")
     }
-        generalLogger.debug("\(message, privacy: .public)")
-    }
 
     func info(_ message: String) {
         generalLogger.info("\(message, privacy: .public)")

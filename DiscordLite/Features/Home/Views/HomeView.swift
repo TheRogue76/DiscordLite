@@ -62,7 +62,7 @@ struct HomeView: View {
     }
 }
 
-//#Preview { // TODO: break the view model view and the subviews apart so we can set them up for testing
+// #Preview { // TODO: break the view model view and the subviews apart so we can set them up for testing
 //    HomeView(viewModel: {
 //        let vm = AuthViewModel()
 //        vm.state = .authenticated(session: AuthSession(
@@ -70,4 +70,4 @@ struct HomeView: View {
 //        ))
 //        return vm
 //    }())
-//}
+// }

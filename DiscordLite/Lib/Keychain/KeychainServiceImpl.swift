@@ -14,7 +14,7 @@ final class KeychainServiceImpl: KeychainService {
             kSecAttrService as String: serviceName,
             kSecAttrAccount as String: key,
             kSecValueData as String: data,
-            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock
+            kSecAttrAccessible as String: kSecAttrAccessibleAfterFirstUnlock,
         ]
 
         let status = SecItemAdd(query as CFDictionary, nil)
@@ -28,7 +28,7 @@ final class KeychainServiceImpl: KeychainService {
             let query: [String: Any] = [
                 kSecClass as String: kSecClassGenericPassword,
                 kSecAttrService as String: serviceName,
-                kSecAttrAccount as String: key
+                kSecAttrAccount as String: key,
             ]
 
             let updateStatus = SecItemUpdate(query as CFDictionary, attributesToUpdate as CFDictionary)
@@ -48,7 +48,7 @@ final class KeychainServiceImpl: KeychainService {
             kSecAttrService as String: serviceName,
             kSecAttrAccount as String: key,
             kSecReturnData as String: true,
-            kSecMatchLimit as String: kSecMatchLimitOne
+            kSecMatchLimit as String: kSecMatchLimitOne,
         ]
 
         var result: AnyObject?
@@ -63,7 +63,8 @@ final class KeychainServiceImpl: KeychainService {
         }
 
         guard let data = result as? Data,
-              let value = String(data: data, encoding: .utf8) else {
+            let value = String(data: data, encoding: .utf8)
+        else {
             return .failure(.failedToDecodeData)
         }
 
@@ -74,7 +75,7 @@ final class KeychainServiceImpl: KeychainService {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrService as String: serviceName,
-            kSecAttrAccount as String: key
+            kSecAttrAccount as String: key,
         ]
 
         let status = SecItemDelete(query as CFDictionary)
