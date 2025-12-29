@@ -241,6 +241,73 @@ Tests are located in `DiscordLiteTests/` organized by layer:
 - `RepoTests/` - Repository tests
 - `ViewModelTests/` - ViewModel tests
 
+### Code Quality Tools
+
+**SwiftLint:**
+```bash
+# Install
+brew install swiftlint
+
+# Run linting
+swiftlint
+
+# Auto-fix issues
+swiftlint --fix
+
+# Strict mode (CI uses this)
+swiftlint lint --strict
+```
+
+Configuration: `.swiftlint.yml`
+- Line length: 120 chars max
+- Custom rules: no print(), no force unwrap, no force try
+- Uses `LoggerService` instead of print statements
+
+**swift-format:**
+```bash
+# Install
+brew install swift-format
+
+# Format all files
+swift-format format --in-place --recursive DiscordLite DiscordLiteTests
+
+# Check formatting
+swift-format lint --recursive DiscordLite DiscordLiteTests
+```
+
+Configuration: `.swift-format`
+- 120 char line length
+- 4 space indentation
+- Ordered imports
+
+**Before committing:**
+1. Run `swiftlint --fix` to auto-fix issues
+2. Run `swift-format format --in-place --recursive DiscordLite DiscordLiteTests`
+3. Run tests: `xcodebuild test -project DiscordLite.xcodeproj -scheme DiscordLite`
+
+### CI/CD Pipeline
+
+**GitHub Actions:** `.github/workflows/ci.yml`
+
+Runs on every PR and push to main/develop:
+1. **SwiftLint** - Code style enforcement (strict mode)
+2. **swift-format** - Format checking
+3. **Unit Tests** - All test suites
+4. **Build** - Release configuration build
+
+**CI must pass before merging PRs**
+
+All jobs run on `macos-15` with Xcode latest.
+
+**Local CI check:**
+```bash
+# Run all checks locally before pushing
+swiftlint lint --strict
+swift-format lint --recursive DiscordLite DiscordLiteTests
+xcodebuild test -project DiscordLite.xcodeproj -scheme DiscordLite -destination 'platform=macOS'
+xcodebuild build -project DiscordLite.xcodeproj -scheme DiscordLite -configuration Release
+```
+
 ### Project Configuration
 
 The project uses Xcode's file system synchronized groups (PBXFileSystemSynchronizedRootGroup), which automatically tracks file additions/removals in the DiscordLite directory.
