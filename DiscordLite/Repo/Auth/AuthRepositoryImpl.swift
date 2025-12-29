@@ -68,7 +68,7 @@ final class AuthRepositoryImpl: AuthRepository {
     func revokeAuth(sessionID: String) async -> Result<Void, AuthRepositoryError> {
         let response = await authGRPCDataSource.revokeAuth(sessionId: sessionID)
         switch response {
-        case .success(let success):
+        case .success:
             let result = keychain.delete(key: sessionKey)
             switch result {
             case .success(_):
