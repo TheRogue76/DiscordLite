@@ -34,9 +34,6 @@ DiscordLite/
 │   └── Config/
 │       └── AppConfig.swift                    # App configuration
 │
-├── Models/
-│   └── AuthSession.swift                      # Session model
-│
 ├── Lib/                                       # LAYER 1: Utilities
 │   ├── Keychain/
 │   │   ├── KeychainService.swift              # Secure storage protocol
@@ -46,6 +43,8 @@ DiscordLite/
 │       └── LoggerServiceImpl.swift            # OSLog implementation
 │
 ├── Repo/                                      # LAYER 2: Domain logic
+│   ├── Models/
+│   │     └── AuthSession.swift 
 │   └── Auth/
 │       ├── AuthRepository.swift               # Auth protocol
 │       ├── AuthRepositoryImpl.swift           # Auth implementation
