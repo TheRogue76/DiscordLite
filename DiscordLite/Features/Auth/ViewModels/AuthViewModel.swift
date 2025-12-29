@@ -67,7 +67,7 @@ final class AuthViewModel: ObservableObject {
                 await MainActor.run {
                     self.state = .authenticated(session: success)
                 }
-            case .failure(let failure):
+            case .failure(_):
                 await MainActor.run {
                     if !Task.isCancelled {
                         self.state = .error("Failed to login with discord, please try again later")
