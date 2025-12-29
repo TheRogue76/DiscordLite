@@ -29,7 +29,7 @@ struct HomeView: View {
                     HStack {
                         Text("Created:")
                             .fontWeight(.semibold)
-                            .foregroundStyle(.secondary)
+                        Text("N/A")
                             .foregroundStyle(.secondary)
                     }
                 }
