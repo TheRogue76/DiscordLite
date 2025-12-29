@@ -4,12 +4,11 @@ import OSLog
 final class LoggerServiceImpl: LoggerService {
     private let subsystem = "com.nasirimehr.DiscordLite"
 
-    private lazy var authLogger = Logger(subsystem: subsystem, category: "Auth")
-    private lazy var networkLogger = Logger(subsystem: subsystem, category: "Network")
-    private lazy var keychainLogger = Logger(subsystem: subsystem, category: "Keychain")
     private lazy var generalLogger = Logger(subsystem: subsystem, category: "General")
 
     func debug(_ message: String) {
+        generalLogger.debug("\(message, privacy: .public)")
+    }
         generalLogger.debug("\(message, privacy: .public)")
     }
 
