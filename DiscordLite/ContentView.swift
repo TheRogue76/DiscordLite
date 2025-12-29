@@ -8,14 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @StateObject private var authViewModel = AuthViewModel()
+
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+        Group {
+            switch authViewModel.state {
+            case .unauthenticated:
+                LoginView(viewModel: authViewModel)
+
+            case .authenticating:
+                AuthLoadingView(viewModel: authViewModel)
+
+            case .authenticated:
+                HomeView(viewModel: authViewModel)
+
+            case .error(let error):
+                AuthErrorView(viewModel: authViewModel, error: error)
+            }
         }
-        .padding()
+        .task {
+            await authViewModel.checkExistingSession()
+        }
     }
 }
 

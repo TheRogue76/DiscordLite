@@ -6,13 +6,34 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		989E80A12F02C3BD0044DB24 /* Connect in Frameworks */ = {isa = PBXBuildFile; productRef = 989E80A02F02C3BD0044DB24 /* Connect */; };
+		989E80A32F02C3BD0044DB24 /* ConnectNIO in Frameworks */ = {isa = PBXBuildFile; productRef = 989E80A22F02C3BD0044DB24 /* ConnectNIO */; };
+		98E5A3852F02BC5C00938202 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 98E5A3842F02BC5C00938202 /* Factory */; };
+		98E5A3872F02BC5C00938202 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 98E5A3862F02BC5C00938202 /* FactoryKit */; };
+		98E5A38B2F02BCD100938202 /* DiscordLiteAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 98E5A38A2F02BCD100938202 /* DiscordLiteAPI */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		982653B72EFD9059005C885C /* DiscordLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscordLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		989E80F32F02E1FF0044DB24 /* Exceptions for "DiscordLite" folder in "DiscordLite" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 982653B62EFD9059005C885C /* DiscordLite */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		982653B92EFD9059005C885C /* DiscordLite */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				989E80F32F02E1FF0044DB24 /* Exceptions for "DiscordLite" folder in "DiscordLite" target */,
+			);
 			path = DiscordLite;
 			sourceTree = "<group>";
 		};
@@ -23,6 +44,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98E5A3872F02BC5C00938202 /* FactoryKit in Frameworks */,
+				989E80A12F02C3BD0044DB24 /* Connect in Frameworks */,
+				98E5A38B2F02BCD100938202 /* DiscordLiteAPI in Frameworks */,
+				989E80A32F02C3BD0044DB24 /* ConnectNIO in Frameworks */,
+				98E5A3852F02BC5C00938202 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,6 +59,7 @@
 			isa = PBXGroup;
 			children = (
 				982653B92EFD9059005C885C /* DiscordLite */,
+				987EE5862F02BD760047CBE5 /* Frameworks */,
 				982653B82EFD9059005C885C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +70,13 @@
 				982653B72EFD9059005C885C /* DiscordLite.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		987EE5862F02BD760047CBE5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -65,6 +99,11 @@
 			);
 			name = DiscordLite;
 			packageProductDependencies = (
+				98E5A3842F02BC5C00938202 /* Factory */,
+				98E5A3862F02BC5C00938202 /* FactoryKit */,
+				98E5A38A2F02BCD100938202 /* DiscordLiteAPI */,
+				989E80A02F02C3BD0044DB24 /* Connect */,
+				989E80A22F02C3BD0044DB24 /* ConnectNIO */,
 			);
 			productName = DiscordLite;
 			productReference = 982653B72EFD9059005C885C /* DiscordLite.app */;
@@ -94,6 +133,11 @@
 			);
 			mainGroup = 982653AE2EFD9059005C885C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				98E5A3832F02BC5C00938202 /* XCRemoteSwiftPackageReference "Factory" */,
+				98E5A3892F02BCD100938202 /* XCRemoteSwiftPackageReference "DiscordLiteServer" */,
+				989E809F2F02C3BD0044DB24 /* XCRemoteSwiftPackageReference "connect-swift" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 982653B82EFD9059005C885C /* Products */;
 			projectDirPath = "";
@@ -256,9 +300,20 @@
 				DEVELOPMENT_TEAM = 2Y9TDP52WY;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DiscordLite/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -288,9 +343,20 @@
 				DEVELOPMENT_TEAM = 2Y9TDP52WY;
 				ENABLE_APP_SANDBOX = YES;
 				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_INCOMING_NETWORK_CONNECTIONS = YES;
+				ENABLE_OUTGOING_NETWORK_CONNECTIONS = YES;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_RESOURCE_ACCESS_AUDIO_INPUT = NO;
+				ENABLE_RESOURCE_ACCESS_BLUETOOTH = NO;
+				ENABLE_RESOURCE_ACCESS_CALENDARS = NO;
+				ENABLE_RESOURCE_ACCESS_CAMERA = NO;
+				ENABLE_RESOURCE_ACCESS_CONTACTS = NO;
+				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
+				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
+				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = DiscordLite/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -331,6 +397,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		989E809F2F02C3BD0044DB24 /* XCRemoteSwiftPackageReference "connect-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/connectrpc/connect-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.0;
+			};
+		};
+		98E5A3832F02BC5C00938202 /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.3;
+			};
+		};
+		98E5A3892F02BCD100938202 /* XCRemoteSwiftPackageReference "DiscordLiteServer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TheRogue76/DiscordLiteServer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		989E80A02F02C3BD0044DB24 /* Connect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 989E809F2F02C3BD0044DB24 /* XCRemoteSwiftPackageReference "connect-swift" */;
+			productName = Connect;
+		};
+		989E80A22F02C3BD0044DB24 /* ConnectNIO */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 989E809F2F02C3BD0044DB24 /* XCRemoteSwiftPackageReference "connect-swift" */;
+			productName = ConnectNIO;
+		};
+		98E5A3842F02BC5C00938202 /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98E5A3832F02BC5C00938202 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
+		};
+		98E5A3862F02BC5C00938202 /* FactoryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98E5A3832F02BC5C00938202 /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = FactoryKit;
+		};
+		98E5A38A2F02BCD100938202 /* DiscordLiteAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98E5A3892F02BCD100938202 /* XCRemoteSwiftPackageReference "DiscordLiteServer" */;
+			productName = DiscordLiteAPI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 982653AF2EFD9059005C885C /* Project object */;
 }
