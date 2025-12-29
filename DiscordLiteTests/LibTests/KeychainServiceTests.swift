@@ -11,8 +11,8 @@ final class KeychainServiceTests: XCTestCase {
 
     override func tearDown() {
         // Clean up any test data
-        try? sut.delete(key: "test_key")
-        try? sut.delete(key: "test_key_2")
+        sut.delete(key: "test_key")
+        sut.delete(key: "test_key_2")
         sut = nil
         super.tearDown()
     }
@@ -23,11 +23,11 @@ final class KeychainServiceTests: XCTestCase {
         let value = "test_value"
 
         // When
-        try sut.save(key: key, value: value)
-        let retrieved = try sut.retrieve(key: key)
+        sut.save(key: key, value: value)
+        let retrieved = sut.retrieve(key: key)
 
         // Then
-        XCTAssertEqual(retrieved, value, "Retrieved value should match saved value")
+        XCTAssertEqual(try retrieved.get(), value, "Retrieved value should match saved value")
     }
 
     func testRetrieveNonExistentKey() throws {
@@ -35,10 +35,10 @@ final class KeychainServiceTests: XCTestCase {
         let key = "non_existent_key"
 
         // When
-        let retrieved = try sut.retrieve(key: key)
+        let retrieved = sut.retrieve(key: key)
 
         // Then
-        XCTAssertNil(retrieved, "Non-existent key should return nil")
+        XCTAssertNil(try retrieved.get(), "Non-existent key should return nil")
     }
 
     func testUpdateExistingKey() throws {
@@ -48,9 +48,9 @@ final class KeychainServiceTests: XCTestCase {
         let updatedValue = "updated_value"
 
         // When
-        try sut.save(key: key, value: originalValue)
-        try sut.save(key: key, value: updatedValue)
-        let retrieved = try sut.retrieve(key: key)
+        sut.save(key: key, value: originalValue)
+        sut.save(key: key, value: updatedValue)
+        let retrieved = try sut.retrieve(key: key).get()
 
         // Then
         XCTAssertEqual(retrieved, updatedValue, "Updated value should be retrieved")
@@ -60,11 +60,11 @@ final class KeychainServiceTests: XCTestCase {
         // Given
         let key = "test_key"
         let value = "test_value"
-        try sut.save(key: key, value: value)
+        sut.save(key: key, value: value)
 
         // When
-        try sut.delete(key: key)
-        let retrieved = try sut.retrieve(key: key)
+        sut.delete(key: key)
+        let retrieved = try sut.retrieve(key: key).get()
 
         // Then
         XCTAssertNil(retrieved, "Deleted key should return nil")
@@ -75,7 +75,7 @@ final class KeychainServiceTests: XCTestCase {
         let key = "non_existent_key"
 
         // When/Then
-        XCTAssertNoThrow(try sut.delete(key: key), "Deleting non-existent key should not throw")
+        XCTAssertNoThrow(try sut.delete(key: key).get(), "Deleting non-existent key should not throw")
     }
 
     func testMultipleKeys() throws {
@@ -86,12 +86,12 @@ final class KeychainServiceTests: XCTestCase {
         let value2 = "test_value_2"
 
         // When
-        try sut.save(key: key1, value: value1)
-        try sut.save(key: key2, value: value2)
+        sut.save(key: key1, value: value1)
+        sut.save(key: key2, value: value2)
 
         // Then
-        let retrieved1 = try sut.retrieve(key: key1)
-        let retrieved2 = try sut.retrieve(key: key2)
+        let retrieved1 = try sut.retrieve(key: key1).get()
+        let retrieved2 = try sut.retrieve(key: key2).get()
         XCTAssertEqual(retrieved1, value1)
         XCTAssertEqual(retrieved2, value2)
     }

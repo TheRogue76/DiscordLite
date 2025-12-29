@@ -9,13 +9,25 @@
 /* Begin PBXBuildFile section */
 		989E80A12F02C3BD0044DB24 /* Connect in Frameworks */ = {isa = PBXBuildFile; productRef = 989E80A02F02C3BD0044DB24 /* Connect */; };
 		989E80A32F02C3BD0044DB24 /* ConnectNIO in Frameworks */ = {isa = PBXBuildFile; productRef = 989E80A22F02C3BD0044DB24 /* ConnectNIO */; };
+		98D85F542F0301C700FC629C /* DiscordLiteAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 98D85F532F0301C700FC629C /* DiscordLiteAPI */; };
 		98E5A3852F02BC5C00938202 /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 98E5A3842F02BC5C00938202 /* Factory */; };
 		98E5A3872F02BC5C00938202 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 98E5A3862F02BC5C00938202 /* FactoryKit */; };
 		98E5A38B2F02BCD100938202 /* DiscordLiteAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 98E5A38A2F02BCD100938202 /* DiscordLiteAPI */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		989E818A2F02F5BF0044DB24 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 982653AF2EFD9059005C885C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 982653B62EFD9059005C885C;
+			remoteInfo = DiscordLite;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		982653B72EFD9059005C885C /* DiscordLite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DiscordLite.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		989E81862F02F5BF0044DB24 /* DiscordLiteTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DiscordLiteTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -26,6 +38,24 @@
 			);
 			target = 982653B62EFD9059005C885C /* DiscordLite */;
 		};
+		989E81A62F02F66A0044DB24 /* Exceptions for "DiscordLite" folder in "DiscordLiteTests" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Core/Config/AppConfig.swift,
+				Lib/GRPCClient/GRPCClient.swift,
+				Lib/GRPCClient/GRPCClientImpl.swift,
+				Lib/Keychain/KeychainService.swift,
+				Lib/Keychain/KeychainServiceImpl.swift,
+				Lib/Logger/LoggerService.swift,
+				Lib/Logger/LoggerServiceImpl.swift,
+				Repo/Auth/AuthRepository.swift,
+				Repo/Auth/AuthRepositoryImpl.swift,
+				Repo/Auth/Datasource/AuthGRPCDatasource.swift,
+				Repo/Auth/Datasource/AuthGRPCDatasourceImpl.swift,
+				Repo/Auth/Models/AuthSession.swift,
+			);
+			target = 989E81852F02F5BF0044DB24 /* DiscordLiteTests */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -33,8 +63,14 @@
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				989E80F32F02E1FF0044DB24 /* Exceptions for "DiscordLite" folder in "DiscordLite" target */,
+				989E81A62F02F66A0044DB24 /* Exceptions for "DiscordLite" folder in "DiscordLiteTests" target */,
 			);
 			path = DiscordLite;
+			sourceTree = "<group>";
+		};
+		989E81872F02F5BF0044DB24 /* DiscordLiteTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = DiscordLiteTests;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +88,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		989E81832F02F5BF0044DB24 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				98D85F542F0301C700FC629C /* DiscordLiteAPI in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -59,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				982653B92EFD9059005C885C /* DiscordLite */,
+				989E81872F02F5BF0044DB24 /* DiscordLiteTests */,
 				987EE5862F02BD760047CBE5 /* Frameworks */,
 				982653B82EFD9059005C885C /* Products */,
 			);
@@ -68,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				982653B72EFD9059005C885C /* DiscordLite.app */,
+				989E81862F02F5BF0044DB24 /* DiscordLiteTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +155,30 @@
 			productReference = 982653B72EFD9059005C885C /* DiscordLite.app */;
 			productType = "com.apple.product-type.application";
 		};
+		989E81852F02F5BF0044DB24 /* DiscordLiteTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 989E818E2F02F5BF0044DB24 /* Build configuration list for PBXNativeTarget "DiscordLiteTests" */;
+			buildPhases = (
+				989E81822F02F5BF0044DB24 /* Sources */,
+				989E81832F02F5BF0044DB24 /* Frameworks */,
+				989E81842F02F5BF0044DB24 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				989E818B2F02F5BF0044DB24 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				989E81872F02F5BF0044DB24 /* DiscordLiteTests */,
+			);
+			name = DiscordLiteTests;
+			packageProductDependencies = (
+				98D85F532F0301C700FC629C /* DiscordLiteAPI */,
+			);
+			productName = DiscordLiteTests;
+			productReference = 989E81862F02F5BF0044DB24 /* DiscordLiteTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -121,6 +191,10 @@
 				TargetAttributes = {
 					982653B62EFD9059005C885C = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					989E81852F02F5BF0044DB24 = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 982653B62EFD9059005C885C;
 					};
 				};
 			};
@@ -144,12 +218,20 @@
 			projectRoot = "";
 			targets = (
 				982653B62EFD9059005C885C /* DiscordLite */,
+				989E81852F02F5BF0044DB24 /* DiscordLiteTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		982653B52EFD9059005C885C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		989E81842F02F5BF0044DB24 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -166,7 +248,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		989E81822F02F5BF0044DB24 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		989E818B2F02F5BF0044DB24 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 982653B62EFD9059005C885C /* DiscordLite */;
+			targetProxy = 989E818A2F02F5BF0044DB24 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		982653C02EFD905A005C885C /* Debug */ = {
@@ -229,6 +326,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -286,6 +384,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_ENABLE_EXPLICIT_MODULES = NO;
 			};
 			name = Release;
 		};
@@ -375,6 +474,46 @@
 			};
 			name = Release;
 		};
+		989E818C2F02F5BF0044DB24 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Y9TDP52WY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nasirimehr.DiscordLiteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiscordLite.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DiscordLite";
+			};
+			name = Debug;
+		};
+		989E818D2F02F5BF0044DB24 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 2Y9TDP52WY;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.nasirimehr.DiscordLiteTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DiscordLite.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/DiscordLite";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -392,6 +531,15 @@
 			buildConfigurations = (
 				982653C32EFD905A005C885C /* Debug */,
 				982653C42EFD905A005C885C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		989E818E2F02F5BF0044DB24 /* Build configuration list for PBXNativeTarget "DiscordLiteTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				989E818C2F02F5BF0044DB24 /* Debug */,
+				989E818D2F02F5BF0044DB24 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -435,6 +583,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 989E809F2F02C3BD0044DB24 /* XCRemoteSwiftPackageReference "connect-swift" */;
 			productName = ConnectNIO;
+		};
+		98D85F532F0301C700FC629C /* DiscordLiteAPI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98E5A3892F02BCD100938202 /* XCRemoteSwiftPackageReference "DiscordLiteServer" */;
+			productName = DiscordLiteAPI;
 		};
 		98E5A3842F02BC5C00938202 /* Factory */ = {
 			isa = XCSwiftPackageProductDependency;

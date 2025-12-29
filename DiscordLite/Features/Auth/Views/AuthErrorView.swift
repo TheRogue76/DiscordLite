@@ -45,9 +45,9 @@ struct AuthErrorView: View {
     }
 }
 
-#Preview {
-    AuthErrorView(
-        viewModel: AuthViewModel(),
-        error: "Random Error"
-    )
-}
+//#Preview { // TODO: break the view model view and the subviews apart so we can set them up for testing
+//    AuthErrorView(
+//        viewModel: AuthViewModel(),
+//        error: "Random Error"
+//    )
+//}

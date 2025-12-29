@@ -59,6 +59,6 @@ struct LoginView: View {
     }
 }
 
-#Preview {
-    LoginView(viewModel: AuthViewModel())
-}
+//#Preview { // TODO: break the view model view and the subviews apart so we can set them up for testing
+//    LoginView(viewModel: AuthViewModel())
+//}

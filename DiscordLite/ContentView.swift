@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import FactoryKit
 
 struct ContentView: View {
-    @StateObject private var authViewModel = AuthViewModel()
+    @StateObject private var authViewModel = AuthViewModel(authRepository: Container.shared.authRepository(), logger: Container.shared.logger())
 
     var body: some View {
         Group {

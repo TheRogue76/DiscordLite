@@ -8,10 +8,15 @@ import Combine
 final class AuthViewModel: ObservableObject {
     @Published var state: AuthViewModelState = .unauthenticated
 
-    @Injected(\.authRepository) private var authRepository
-    @Injected(\.logger) private var logger
+    private let authRepository: AuthRepository
+    private let logger: LoggerService
 
     private var pollingTask: Task<Void, Error>?
+    
+    init(authRepository: AuthRepository, logger: LoggerService) {
+        self.authRepository = authRepository
+        self.logger = logger
+    }
 
     func checkExistingSession() async {
         logger.info("Checking for existing session")
