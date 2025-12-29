@@ -21,7 +21,7 @@ final class AuthViewModel: ObservableObject {
     func checkExistingSession() async {
         logger.info("Checking for existing session")
 
-        let result = await authRepository.getStoredSession() //{
+        let result = await authRepository.getStoredSession()
         switch result {
         case .success(let success):
             guard let session = success else {
