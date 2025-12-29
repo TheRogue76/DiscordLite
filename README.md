@@ -270,8 +270,6 @@ Edit `Core/Config/AppConfig.swift` to customize:
 struct AppConfig {
     let grpcHost: String              // Default: "localhost"
     let grpcPort: Int                 // Default: 50051
-    let authPollingInterval: TimeInterval  // Default: 2.0 seconds
-    let authTimeout: TimeInterval     // Default: 60.0 seconds
 }
 ```
 
