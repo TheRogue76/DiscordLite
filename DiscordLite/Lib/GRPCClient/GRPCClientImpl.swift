@@ -8,13 +8,15 @@ import Connect
 import ConnectNIO
 
 class GRPCClientImpl: GRPCClient {
+    private let appConfig: AppConfig
     var client: ProtocolClient
     
-    init() {
+    init(appConfig: AppConfig) {
+        self.appConfig = appConfig
         client = ProtocolClient(
-            httpClient: NIOHTTPClient(host: "http://localhost", port: 50051),
+            httpClient: NIOHTTPClient(host: appConfig.grpcHost, port: appConfig.grpcPort),
             config: ProtocolClientConfig(
-                host: "http://localhost:50051",
+                host: "\(appConfig.grpcHost):\(appConfig.grpcPort)",
                 networkProtocol: .grpc,
                 codec: ProtoCodec(),
             )

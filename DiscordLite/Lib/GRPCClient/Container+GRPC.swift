@@ -8,7 +8,11 @@ import FactoryKit
 
 extension Container {
     var grpcClient: Factory<GRPCClient> {
-        self { GRPCClientImpl() }
+        self {
+            GRPCClientImpl(
+                appConfig: self.appConfig()
+            )
+        }
             .singleton
     }
 }
