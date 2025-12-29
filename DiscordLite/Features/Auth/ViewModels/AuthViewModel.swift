@@ -92,7 +92,6 @@ final class AuthViewModel: ObservableObject {
             return
         }
 
-//        do {
         let result = await authRepository.revokeAuth(sessionID: session.sessionID)
         switch result {
         case .success():
