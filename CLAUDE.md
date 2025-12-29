@@ -287,9 +287,7 @@ Edit `Core/Config/AppConfig.swift`:
 ```swift
 static let `default` = AppConfig(
     grpcHost: "your-host",
-    grpcPort: 50051,
-    authPollingInterval: 2.0,
-    authTimeout: 60.0
+    grpcPort: 50051
 )
 ```
 
