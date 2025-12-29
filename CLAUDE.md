@@ -67,7 +67,7 @@ Lib Layer (Lib/)           - Low-level utilities (Keychain, Logger)
 ## Dependencies
 
 ### Swift Packages (SPM)
-1. **FactoryKit** - `https://github.com/hmlongco/Factory` (v2.3.0+)
+1. **FactoryKit** - `https://github.com/hmlongco/Factory` (v2.5.3+)
    - Dependency injection framework
    - Used for service registration and injection
 
