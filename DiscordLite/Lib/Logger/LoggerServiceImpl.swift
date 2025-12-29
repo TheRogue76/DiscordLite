@@ -19,9 +19,9 @@ final class LoggerServiceImpl: LoggerService {
 
     func error(_ message: String, error: Error?) {
         if let error = error {
-            generalLogger.error("\(message, privacy: .public): \(error.localizedDescription, privacy: .public)")
+            generalLogger.error("\(message, privacy: .private): \(error.localizedDescription, privacy: .public)")
         } else {
-            generalLogger.error("\(message, privacy: .public)")
+            generalLogger.error("\(message, privacy: .private)")
         }
     }
 }
