@@ -1,7 +1,12 @@
+import FactoryKit
 import SwiftUI
 
 struct HomeView: View {
     @ObservedObject var viewModel: AuthViewModel
+
+    @StateObject private var guildViewModel: GuildViewModel
+    @StateObject private var channelViewModel: ChannelViewModel
+    @StateObject private var messageViewModel: MessageViewModel
 
     var session: AuthSession? {
         if case .authenticated(let session) = viewModel.state {
@@ -10,45 +15,57 @@ struct HomeView: View {
         return nil
     }
 
-    var body: some View {
-        VStack(spacing: 20) {
-            Text("Welcome to DiscordLite")
-                .font(.largeTitle)
-                .fontWeight(.bold)
+    init(viewModel: AuthViewModel) {
+        self.viewModel = viewModel
 
-            if let session = session {
-                VStack(spacing: 12) {
-                    HStack {
-                        Text("Session ID:")
-                            .fontWeight(.semibold)
-                        Text(session.sessionID)
-                            .foregroundStyle(.secondary)
-                            .textSelection(.enabled)
-                    }
-
-                    HStack {
-                        Text("Created:")
-                            .fontWeight(.semibold)
-                        Text("N/A")
-                            .foregroundStyle(.secondary)
-                    }
-                }
-                .padding()
-                .background(Color(.controlBackgroundColor))
-                .cornerRadius(8)
-            }
-
-            Text("Phase 1: Authentication Complete")
-                .font(.headline)
-                .foregroundStyle(.green)
-                .padding(.top)
-
-            Text("More features coming in Phase 2...")
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
+        // Extract sessionID from AuthViewModel state
+        let sessionID: String
+        if case .authenticated(let session) = viewModel.state {
+            sessionID = session.sessionID
+        } else {
+            sessionID = ""
         }
-        .padding()
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
+
+        _guildViewModel = StateObject(wrappedValue: GuildViewModel(
+            guildRepository: Container.shared.guildRepository(),
+            logger: Container.shared.logger(),
+            sessionID: sessionID
+        ))
+
+        _channelViewModel = StateObject(wrappedValue: ChannelViewModel(
+            channelRepository: Container.shared.channelRepository(),
+            logger: Container.shared.logger(),
+            sessionID: sessionID
+        ))
+
+        _messageViewModel = StateObject(wrappedValue: MessageViewModel(
+            messageRepository: Container.shared.messageRepository(),
+            logger: Container.shared.logger(),
+            sessionID: sessionID
+        ))
+    }
+
+    var body: some View {
+        HStack(spacing: 0) {
+            // Left pane: Guilds
+            GuildListView(viewModel: guildViewModel)
+
+            Divider()
+
+            // Middle pane: Channels
+            ChannelListView(
+                viewModel: channelViewModel,
+                selectedGuild: guildViewModel.selectedGuild
+            )
+
+            Divider()
+
+            // Right pane: Messages
+            MessageListView(
+                viewModel: messageViewModel,
+                selectedChannel: channelViewModel.selectedChannel
+            )
+        }
         .toolbar {
             ToolbarItem(placement: .automatic) {
                 Button("Logout") {
@@ -57,6 +74,28 @@ struct HomeView: View {
                     }
                 }
                 .buttonStyle(.bordered)
+            }
+        }
+        .task {
+            await guildViewModel.loadGuilds()
+        }
+        .onChange(of: guildViewModel.selectedGuild) { _, newGuild in
+            // Load channels when guild selection changes
+            if let guild = newGuild {
+                Task {
+                    await channelViewModel.loadChannels(guildId: guild.id)
+                }
+            }
+        }
+        .onChange(of: channelViewModel.selectedChannel) { _, newChannel in
+            // Stop streaming for old channel and load messages for new channel
+            messageViewModel.stopStreaming()
+
+            if let channel = newChannel {
+                Task {
+                    await messageViewModel.loadMessages(channelId: channel.id)
+                    messageViewModel.startStreaming(channelId: channel.id)
+                }
             }
         }
     }

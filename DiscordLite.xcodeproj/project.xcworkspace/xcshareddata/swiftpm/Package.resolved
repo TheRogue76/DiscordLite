@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TheRogue76/DiscordLiteServer",
       "state" : {
-        "revision" : "fc1ebc87758c36259711ebe62b51a4cca45a8903",
-        "version" : "0.1.0"
+        "revision" : "ecdfe0e51ab100d4c51a0fd685ae122ef0900ecb",
+        "version" : "0.3.0"
       }
     },
     {
