@@ -1,5 +1,5 @@
 import Foundation
 
-struct AuthSession: Codable, Equatable {
+public struct AuthSession: Codable, Equatable {
     let sessionID: String
 }

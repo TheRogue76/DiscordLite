@@ -36,7 +36,7 @@ final class ChannelRepositoryImpl: ChannelRepository {
                     channelType = .text
                 case .guildVoice:
                     channelType = .voice
-                case .guildNews:
+                case .guildAnnouncement:
                     channelType = .announcement
                 default:
                     channelType = .unknown

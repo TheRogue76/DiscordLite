@@ -33,7 +33,7 @@
 //
 //    func testCheckExistingSessionWithValidSessionSetsAuthenticated() async {
 //        // Given
-//        let session = DiscordLite.AuthSession(
+//        let session = AuthSession(
 //            sessionID: "valid-session",
 //        )
 //
@@ -97,7 +97,7 @@
 //
 //    func testLogoutCallsRevokeAuthAndSetsUnauthenticated() async {
 //        // Given
-//        let session = DiscordLite.AuthSession(
+//        let session = AuthSession(
 //            sessionID: "session-to-logout",
 //        )
 //        sut.state = .authenticated(session: session)

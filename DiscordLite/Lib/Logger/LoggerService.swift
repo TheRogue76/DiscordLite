@@ -1,9 +1,9 @@
 import Foundation
 import OSLog
 
-// import SwiftMockk
+import SwiftMockk
 
-// @Mockable
+@Mockable
 protocol LoggerService {
     func debug(_ message: String)
     func info(_ message: String)
