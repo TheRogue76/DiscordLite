@@ -7,16 +7,16 @@
 import DiscordLiteAPI
 import Foundation
 
-// import SwiftMockk
+import SwiftMockk
 
-enum AuthGRPCDatasourceError: Error {
+public enum AuthGRPCDatasourceError: Error {
     case getAuthUrlFailed
     case couldntParseUrlFromServer(url: String)
     case getStatusFailed
     case failedToRevokeSession
 }
 
-// @Mockable
+@Mockable
 protocol AuthGRPCDatasource {
     func getAuthUrl() async -> Result<(url: URL, sessionId: String), AuthGRPCDatasourceError>
     func getAuthStatus(sessionId: String) async -> Result<

@@ -7,9 +7,9 @@
 import Connect
 import Foundation
 
-// import SwiftMockk
+import SwiftMockk
 
-// @Mockable
+@Mockable
 protocol GRPCClient {
     var client: ProtocolClient { get }
 }

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		98233A682F059A6C009FDB93 /* SwiftMockk in Frameworks */ = {isa = PBXBuildFile; productRef = 98233A672F059A6C009FDB93 /* SwiftMockk */; };
+		98233A6A2F059A86009FDB93 /* SwiftMockk in Frameworks */ = {isa = PBXBuildFile; productRef = 98233A692F059A86009FDB93 /* SwiftMockk */; };
 		989E80A12F02C3BD0044DB24 /* Connect in Frameworks */ = {isa = PBXBuildFile; productRef = 989E80A02F02C3BD0044DB24 /* Connect */; };
 		989E80A32F02C3BD0044DB24 /* ConnectNIO in Frameworks */ = {isa = PBXBuildFile; productRef = 989E80A22F02C3BD0044DB24 /* ConnectNIO */; };
 		98D85F542F0301C700FC629C /* DiscordLiteAPI in Frameworks */ = {isa = PBXBuildFile; productRef = 98D85F532F0301C700FC629C /* DiscordLiteAPI */; };
@@ -42,6 +44,8 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Core/Config/AppConfig.swift,
+				Features/Auth/ViewModels/AuthViewModel.swift,
+				Features/Auth/ViewModels/AuthViewModelState.swift,
 				Lib/GRPCClient/GRPCClient.swift,
 				Lib/GRPCClient/GRPCClientImpl.swift,
 				Lib/Keychain/KeychainService.swift,
@@ -84,6 +88,7 @@
 				989E80A12F02C3BD0044DB24 /* Connect in Frameworks */,
 				98E5A38B2F02BCD100938202 /* DiscordLiteAPI in Frameworks */,
 				989E80A32F02C3BD0044DB24 /* ConnectNIO in Frameworks */,
+				98233A682F059A6C009FDB93 /* SwiftMockk in Frameworks */,
 				98E5A3852F02BC5C00938202 /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98233A6A2F059A86009FDB93 /* SwiftMockk in Frameworks */,
 				98D85F542F0301C700FC629C /* DiscordLiteAPI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +156,7 @@
 				98E5A38A2F02BCD100938202 /* DiscordLiteAPI */,
 				989E80A02F02C3BD0044DB24 /* Connect */,
 				989E80A22F02C3BD0044DB24 /* ConnectNIO */,
+				98233A672F059A6C009FDB93 /* SwiftMockk */,
 			);
 			productName = DiscordLite;
 			productReference = 982653B72EFD9059005C885C /* DiscordLite.app */;
@@ -174,6 +181,7 @@
 			name = DiscordLiteTests;
 			packageProductDependencies = (
 				98D85F532F0301C700FC629C /* DiscordLiteAPI */,
+				98233A692F059A86009FDB93 /* SwiftMockk */,
 			);
 			productName = DiscordLiteTests;
 			productReference = 989E81862F02F5BF0044DB24 /* DiscordLiteTests.xctest */;
@@ -211,6 +219,7 @@
 				98E5A3832F02BC5C00938202 /* XCRemoteSwiftPackageReference "Factory" */,
 				98E5A3892F02BCD100938202 /* XCRemoteSwiftPackageReference "DiscordLiteServer" */,
 				989E809F2F02C3BD0044DB24 /* XCRemoteSwiftPackageReference "connect-swift" */,
+				98233A662F059A6C009FDB93 /* XCRemoteSwiftPackageReference "SwiftMockk" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 982653B82EFD9059005C885C /* Products */;
@@ -551,6 +560,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		98233A662F059A6C009FDB93 /* XCRemoteSwiftPackageReference "SwiftMockk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TheRogue76/SwiftMockk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.0;
+			};
+		};
 		989E809F2F02C3BD0044DB24 /* XCRemoteSwiftPackageReference "connect-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/connectrpc/connect-swift";
@@ -572,12 +589,22 @@
 			repositoryURL = "https://github.com/TheRogue76/DiscordLiteServer";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
+				minimumVersion = 0.3.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		98233A672F059A6C009FDB93 /* SwiftMockk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98233A662F059A6C009FDB93 /* XCRemoteSwiftPackageReference "SwiftMockk" */;
+			productName = SwiftMockk;
+		};
+		98233A692F059A86009FDB93 /* SwiftMockk */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 98233A662F059A6C009FDB93 /* XCRemoteSwiftPackageReference "SwiftMockk" */;
+			productName = SwiftMockk;
+		};
 		989E80A02F02C3BD0044DB24 /* Connect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 989E809F2F02C3BD0044DB24 /* XCRemoteSwiftPackageReference "connect-swift" */;

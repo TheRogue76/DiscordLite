@@ -1,5 +1,5 @@
 {
-  "originHash" : "8373ef2c18047e56e03c9a522cfd788d35c52fea148a8c337c39b8291ac488fa",
+  "originHash" : "8a7ba406ae05fab32ca3f8026c4dd7c63ab594f50ed9dfbef34dfab6f20558cb",
   "pins" : [
     {
       "identity" : "connect-swift",
@@ -15,8 +15,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TheRogue76/DiscordLiteServer",
       "state" : {
-        "revision" : "fc1ebc87758c36259711ebe62b51a4cca45a8903",
-        "version" : "0.1.0"
+        "revision" : "46ce303a022704109682f47da29a397c480b5453",
+        "version" : "0.3.1"
       }
     },
     {
@@ -83,12 +83,30 @@
       }
     },
     {
+      "identity" : "swift-syntax",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-syntax",
+      "state" : {
+        "revision" : "0687f71944021d616d34d922343dcef086855920",
+        "version" : "600.0.1"
+      }
+    },
+    {
       "identity" : "swift-system",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-system.git",
       "state" : {
         "revision" : "395a77f0aa927f0ff73941d7ac35f2b46d47c9db",
         "version" : "1.6.3"
+      }
+    },
+    {
+      "identity" : "swiftmockk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TheRogue76/SwiftMockk",
+      "state" : {
+        "revision" : "d01b5537bd56ff0f0880832d87ac8f23651b3206",
+        "version" : "0.4.0"
       }
     }
   ],
